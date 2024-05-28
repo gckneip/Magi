@@ -1,0 +1,8 @@
+:root {
+  background-color: var(--dracula-background);
+}
+
+body{
+  padding:0px;
+  margin:0px;
+}
