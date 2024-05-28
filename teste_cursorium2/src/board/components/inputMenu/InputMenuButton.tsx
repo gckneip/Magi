@@ -1,10 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
+
 interface Props {
     inputType: 'Table' | 'Equation';
+    setShowWitchInputType: Dispatch<SetStateAction<'None' | 'Table' | 'Equation'>>;
 }
 
 export default function InputMenuButton(props: Props) {
     function handleMenuButtonClick() {
-        console.log(props.inputType);
+        props.setShowWitchInputType(props.inputType);
     }
 
     return (
