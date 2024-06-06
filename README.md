@@ -13,7 +13,9 @@
 ### Stack
 - Bun;
 - React;
-- Typescript + SWC;
+- Next;
+- MUI Grid;
+- Typescript;
 
 ### Ajustes e melhorias
 
