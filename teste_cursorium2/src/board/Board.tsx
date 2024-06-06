@@ -19,7 +19,7 @@ export default function Board(){
             return <InputEquation />;
           case 'None':
           default:
-            return <>{">:("}</>;
+            return <>{"Selecione uma opção no menu acima!"}</>;
         }
       };
 
