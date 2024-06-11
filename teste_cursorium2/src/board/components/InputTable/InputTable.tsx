@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { DataGrid, GridColDef, GridEventListener} from '@mui/x-data-grid';
+import "./styles/InputTable.css"
+import { DataGrid, GridColDef, GridEventListener } from '@mui/x-data-grid';
 import { useState } from 'react';
 
 type Row = {
@@ -10,57 +10,71 @@ type Row = {
 };
 
 export default function DataTable() {
+  const [rows, setRows] = useState<Row[]>([
+    { id: 1, A: '', B: '', S: '' },
+    { id: 2, A: '', B: '', S: '' },
+    { id: 3, A: '', B: '', S: '' },
+    { id: 4, A: '', B: '', S: '' },
+    { id: 5, A: '', B: '', S: '' },
+    { id: 6, A: '', B: '', S: '' },
+    { id: 7, A: '', B: '', S: '' },
+    { id: 8, A: '', B: '', S: '' },
+    { id: 9, A: '', B: '', S: '' },
+  ]);
+
   const columns: GridColDef[] = [
-    { field: 'A', headerName: 'A', flex: 1, editable:true},
-    { field: 'B', headerName: 'B', flex: 1, editable:true},
-    { field: 'S', headerName: 'S', editable:true},
+    { field: 'A', headerName: 'A', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
+    { field: 'B', headerName: 'B', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
+    { field: 'S', headerName: 'S', editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
   ];
-  
-  const rows:Row[] = [
-    { id: 1, A: '', B:'', S:''},
-    { id: 2, A: '', B:'', S:''},
-    { id: 3, A: '', B:'', S:''},
-    { id: 4, A: '', B:'', S:''},
-    { id: 5, A: '', B:'', S:''},
-    { id: 6, A: '', B:'', S:''},
-    { id: 7, A: '', B:'', S:''},
-    { id: 8, A: '', B:'', S:''},
-    { id: 9, A: '', B:'', S:''},
-  ];
-  
-  
-  const handleCellKeyDown: GridEventListener<'cellKeyDown'> = 
-  (params, event, details) =>
-    {
-      const column = params.field as keyof Row;
-      const rowId = params.id as number;
-      const row = rows.find((row) => row.id === rowId);
-      if (!row) return; 
 
-      var cellValue = row[column] || '';
+  const handleCellKeyDown: GridEventListener<'cellKeyDown'> = (params, event) => {
+    const column = params.field as keyof Row;
+    const rowId = params.id as number;
+    const rowIndex = rows.findIndex((row) => row.id === rowId);
+    if (rowIndex === -1) return;
 
-      console.log(cellValue);
+    const row = rows[rowIndex];
+    const cellValue = row[column] as string || '';
 
-      if(((event.code != 'Digit0' && event.code != 'Digit1') || cellValue != '') && event.code != 'Backspace'){
+    if (cellValue.length >= 1 && event.key !== 'Backspace') {
+      event.preventDefault();
+      return;
+    }
+
+    const newRows = [...rows];
+    switch (event.key) {
+      case '0':
+        newRows[rowIndex] = { ...row, [column]: '0' };
+        setRows(newRows);
+        break;
+      case '1':
+        newRows[rowIndex] = { ...row, [column]: '1' };
+        setRows(newRows);
+        break;
+      case 'Backspace':
+        newRows[rowIndex] = { ...row, [column]: '' };
+        setRows(newRows);
+        break;
+      default:
         event.preventDefault();
-        return;
-      } else {
-      }
-    };
+        newRows[rowIndex] = { ...row, [column]: '0' };
+        setRows(newRows);
+    }
+  };
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
         pageSizeOptions={[9]}
         disableRowSelectionOnClick
         hideFooter
-        disableColumnMenu={true} 
-        disableColumnResize={true}
-        disableColumnSorting={true}
+        disableColumnMenu
+        disableColumnResize
+        disableColumnSorting
         onCellKeyDown={handleCellKeyDown}
+        className='InputTable'
       />
-    </div>
   );
 }

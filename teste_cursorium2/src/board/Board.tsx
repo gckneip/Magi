@@ -6,32 +6,33 @@ import './Board.css';
 
 type inputType = 'None' | 'Table' | 'Equation';
 
-export default function Board(){
-    const [showWitchInputType, setShowWitchInputType]:
-    [inputType, Dispatch<SetStateAction<inputType>>] = 
+export default function Board() {
+  const [showWitchInputType, setShowWitchInputType]:
+    [inputType, Dispatch<SetStateAction<inputType>>] =
     useState<inputType>('None');
 
-    const renderInput = () => {
-        switch (showWitchInputType) {
-          case 'Table':
-            return <InputTable/>;
-          case 'Equation':
-            return <InputEquation />;
-          case 'None':
-          default:
-            return <>{"Selecione uma opção no menu acima!"}</>;
-        }
-      };
+  const renderInput = () => {
+    switch (showWitchInputType) {
+      case 'Table':
+        return <InputTable />;
+      case 'Equation':
+        return <InputEquation />;
+      case 'None':
+      default:
+        return <>{"Selecione uma opção no menu acima!"}</>;
+    }
+  };
 
-    return <>
+  return (
+  <div className="Board">
     <div className="InputMenu">
-
-        <InputMenu
-        setShowWitchInputType = {setShowWitchInputType}
-        />
+      <InputMenu
+        setShowWitchInputType={setShowWitchInputType}
+      />
     </div>
-        <div className="Input">
-            {renderInput()}
-        </div>
-    </>
+    <div className="Input">
+      {renderInput()}
+    </div>
+  </div>
+  );
 }
