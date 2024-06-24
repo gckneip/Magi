@@ -64,7 +64,8 @@ export default function DataTable() {
   };
 
   return (
-      <DataGrid
+    <div className="InputTableDiv">
+      {/* <DataGrid
         rows={rows}
         columns={columns}
         pageSizeOptions={[9]}
@@ -75,6 +76,8 @@ export default function DataTable() {
         disableColumnSorting
         onCellKeyDown={handleCellKeyDown}
         className='InputTable'
-      />
+        /> */}
+        Table
+        </div>
   );
 }

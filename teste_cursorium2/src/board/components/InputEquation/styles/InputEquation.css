@@ -1,7 +1,5 @@
-.triangulo{
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 86.6px solid blue; /* 86.6px is approximately height of an equilateral triangle with sides of 100px */
-  }
+.InputEquation{
+  display: grid;
+  align-items: center;
+  color: var(--rp-foam);
+}

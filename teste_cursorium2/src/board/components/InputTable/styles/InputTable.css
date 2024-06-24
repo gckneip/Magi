@@ -1,9 +1,11 @@
-.InputTable{
-    color:var(--dracula-cyan);
-}
+.InputTableDiv{
+    display: grid;
+    align-items: center;
+    color: var(--rp-foam);
+  }
 
 .InputTable .MuiDataGrid-cell {
-    color: var(--dracula-cyan);
+    color: var(--rp-foam);
     border:0.01px solid var(--dracula-foreground);
     text-align: center !important;
     align-items: center;
@@ -14,11 +16,11 @@
 }
 
 .GridColumnHeader{
-    background-color: var(--dracula-current_line);
-    color:var(--dracula-cyan);
+    background-color: var(--rp-overlay);
+    color:var(--rp-foam);
 }
 
 .InputTable .MuiDataGrid-cell--editing {
-    background-color: var(--dracula-purple) !important;
+    background-color: var(--rp-muted) !important;
     color: var(--dracula-pink) !important;
 }
