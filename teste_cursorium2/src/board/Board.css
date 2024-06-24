@@ -18,7 +18,7 @@
 }
 
 .CircuitDiv, .Board1{
-    margin:45px;
+    margin:125px 90px 125px 90px;
 }
 
 .Board1{
@@ -28,6 +28,7 @@
 }
 
 .CircuitDiv{
+    margin-left: 30px;
     display: grid;
     background-color: var(--rp-muted);
     border-radius: 26px;
