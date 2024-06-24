@@ -1,0 +1,24 @@
+.InputTable{
+    color:var(--dracula-cyan);
+}
+
+.InputTable .MuiDataGrid-cell {
+    color: var(--dracula-cyan);
+    border:0.01px solid var(--dracula-foreground);
+    text-align: center !important;
+    align-items: center;
+}
+ 
+.InputTable .MuiDataGrid-cell:hover, .GridColumnHeader:hover {
+    color: var(--dracula-pink);
+}
+
+.GridColumnHeader{
+    background-color: var(--dracula-current_line);
+    color:var(--dracula-cyan);
+}
+
+.InputTable .MuiDataGrid-cell--editing {
+    background-color: var(--dracula-purple) !important;
+    color: var(--dracula-pink) !important;
+}
