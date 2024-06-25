@@ -1,26 +1,28 @@
 .InputTableDiv{
     display: grid;
     align-items: center;
-    color: var(--rp-foam);
   }
 
 .InputTable .MuiDataGrid-cell {
-    color: var(--rp-foam);
-    border:0.01px solid var(--dracula-foreground);
     text-align: center !important;
     align-items: center;
+    color: var(--rp-text);
+    font-family: 'Jebrains', sans-serif;
+    font-size: 1.5rem;
 }
  
 .InputTable .MuiDataGrid-cell:hover, .GridColumnHeader:hover {
-    color: var(--dracula-pink);
+    color: var(--rp-text);
 }
 
 .GridColumnHeader{
     background-color: var(--rp-overlay);
-    color:var(--rp-foam);
+    color: var(--rp-foam);
+    font-family: 'Jebrains', sans-serif;
+    font-size: 1.5rem;
 }
 
 .InputTable .MuiDataGrid-cell--editing {
     background-color: var(--rp-muted) !important;
-    color: var(--dracula-pink) !important;
+    color: var(--rp-text) !important;
 }

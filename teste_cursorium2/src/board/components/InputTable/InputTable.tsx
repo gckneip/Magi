@@ -25,7 +25,7 @@ export default function DataTable() {
   const columns: GridColDef[] = [
     { field: 'A', headerName: 'A', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
     { field: 'B', headerName: 'B', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
-    { field: 'S', headerName: 'S', editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
+    { field: 'S', headerName: 'S', flex: 2, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
   ];
 
   const handleCellKeyDown: GridEventListener<'cellKeyDown'> = (params, event) => {
@@ -65,7 +65,7 @@ export default function DataTable() {
 
   return (
     <div className="InputTableDiv">
-      {/* <DataGrid
+      <DataGrid
         rows={rows}
         columns={columns}
         pageSizeOptions={[9]}
@@ -76,8 +76,7 @@ export default function DataTable() {
         disableColumnSorting
         onCellKeyDown={handleCellKeyDown}
         className='InputTable'
-        /> */}
-        Table
+        />
         </div>
   );
 }
