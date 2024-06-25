@@ -77,6 +77,6 @@ export default function DataTable() {
         onCellKeyDown={handleCellKeyDown}
         className='InputTable'
         />
-        </div>
+    </div>
   );
 }
