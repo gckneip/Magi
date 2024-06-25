@@ -1,6 +1,8 @@
 .InputTableDiv{
     display: grid;
     align-items: center;
+    height: fit-content;
+    max-height: 100%;
   }
 
 .InputTable .MuiDataGrid-cell {
