@@ -10,13 +10,14 @@
 
 .EquationDiv, .TableDiv{
     display: grid;
-    background-color: var(--rp-surface);
     border-radius: 26px;
     justify-content: center;
     grid-template-columns: 1fr;
+    /* background-color: var(--rp-surface); */
 }
 
 .EquationDiv{
+    background-color: var(--rp-surface);
     margin-bottom: 30px;
 }
 
