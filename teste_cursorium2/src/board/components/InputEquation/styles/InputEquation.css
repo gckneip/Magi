@@ -21,3 +21,9 @@
 .InputEquation:focus::placeholder {
   opacity: 0; /* Hide the placeholder on focus */
 }
+
+@media screen and (max-width:500px) {
+  .InputEquation{
+    font-size: 1rem;
+  }
+}

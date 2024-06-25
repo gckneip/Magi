@@ -26,3 +26,12 @@
     background-color: var(--rp-muted) !important;
     color: var(--rp-text) !important;
 }
+
+@media screen and (max-width:500px) {
+    .GridColumnHeader{
+        font-size: 1rem;
+    }
+    .InputTable .MuiDataGrid-cell {
+        font-size: 1rem;
+    }
+}
