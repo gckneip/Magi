@@ -13,6 +13,7 @@
     background-color: var(--rp-surface);
     border-radius: 26px;
     justify-content: center;
+    grid-template-columns: 1fr;
 }
 
 .EquationDiv{
