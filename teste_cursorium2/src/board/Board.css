@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: var(--rp-base);
+    color: var(--rp-text);
+    font-family: 'Jebrains', sans-serif;
 }
 
 .EquationDiv, .TableDiv{
@@ -23,7 +25,7 @@
 
 .Board1{
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 4fr;
     margin-right: 0px;
 }
 

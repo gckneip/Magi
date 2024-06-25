@@ -1,5 +1,23 @@
 .InputEquation{
-  display: grid;
-  align-items: center;
-  color: var(--rp-foam);
+  margin:22px;
+  padding: 17px 23px 17px 23px;
+  background-color: var(--rp-surface);
+  grid-template-rows:auto;
+  border-radius: 5px;
+  border: solid var(--rp-surface) 2px;
+  color: var(--rp-text);
+  font-family: 'Jebrains', sans-serif;
+  font-size: 1.5rem;
+}
+.InputEquation:focus{
+  outline: none;
+  border: solid var(--rp-highlight-high) 2px;
+}
+
+.InputEquation::placeholder {
+  transition: opacity 0.3s ease;
+}
+
+.InputEquation:focus::placeholder {
+  opacity: 0; /* Hide the placeholder on focus */
 }
