@@ -1,23 +1,50 @@
 :root{
+  /* Color Pallete */
+  --rp-base: #191724;
+	--rp-surface: #1f1d2e;
+	--rp-overlay: #26233a;
+	--rp-muted: #6e6a86;
+	--rp-subtle: #908caa;
+	--rp-text: #e0def4;
+	--rp-love: #eb6f92;
+	--rp-gold: #f6c177;
+	--rp-rose: #ebbcba;
+	--rp-pine: #31748f;
+	--rp-foam: #9ccfd8;
+	--rp-iris: #c4a7e7;
+	--rp-highlight-low: #21202e;
+	--rp-highlight-med: #403d52;
+	--rp-highlight-high: #524f67;
 
-  /* variables */
+	--rp-moon-base: #232136;
+	--rp-moon-surface: #2a273f;
+	--rp-moon-overlay: #393552;
+	--rp-moon-muted: #6e6a86;
+	--rp-moon-subtle: #908caa;
+	--rp-moon-text: #e0def4;
+	--rp-moon-love: #eb6f92;
+	--rp-moon-gold: #f6c177;
+	--rp-moon-rose: #ea9a97;
+	--rp-moon-pine: #3e8fb0;
+	--rp-moon-foam: #9ccfd8;
+	--rp-moon-iris: #c4a7e7;
+	--rp-moon-highlight-low: #2a283e;
+	--rp-moon-highlight-med: #44415a;
+	--rp-moon-highlight-high: #56526e;
 
-  /* font colors */
-  --dracula-background: #282A36;
-  --dracula-current_line: #44475A;
-  --dracula-foreground: #F8F8F2;
-  --dracula-comment: #6272A4;
-  --dracula-cyan: #8BE9FD;
-  --dracula-green: #50FA7B;
-  --dracula-orange: #FFB86C;
-  --dracula-pink: #FF79C6;
-  --dracula-purple: #BD93F9;
-  --dracula-red: #FF5555;
-  --dracula-yellow: #F1FA8C;
-
-  /* font families */
-  --font-family-main: Rightous
-
-  /* font size */
-  --title: 1.5rem;
+	--rp-dawn-base: #faf4ed;
+	--rp-dawn-surface: #fffaf3;
+	--rp-dawn-overlay: #f2e9e1;
+	--rp-dawn-muted: #9893a5;
+	--rp-dawn-subtle: #797593;
+	--rp-dawn-text: #575279;
+	--rp-dawn-love: #b4637a;
+	--rp-dawn-gold: #ea9d34;
+	--rp-dawn-rose: #d7827e;
+	--rp-dawn-pine: #286983;
+	--rp-dawn-foam: #56949f;
+	--rp-dawn-iris: #907aa9;
+	--rp-dawn-highlight-low: #f4ede8;
+	--rp-dawn-highlight-med: #dfdad9;
+	--rp-dawn-highlight-high: #cecacd;
 }

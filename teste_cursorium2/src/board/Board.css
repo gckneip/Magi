@@ -1,19 +1,56 @@
 .Board{
-    width:100%;
+    width:100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--rp-base);
+    color: var(--rp-text);
+    font-family: 'Jebrains', sans-serif;
 }
 
-.Input {
+.EquationDiv, .TableDiv{
     display: grid;
+    border-radius: 26px;
     justify-content: center;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    padding: 100px 0px;
+    grid-template-columns: 1fr;
+    /* background-color: var(--rp-surface); */
 }
 
-.InputMenu {
-    width: 100%;
+.EquationDiv{
+    background-color: var(--rp-surface);
+    margin-bottom: 30px;
+}
+
+.CircuitDiv, .Board1{
+    margin:125px 90px 125px 90px;
+}
+
+.Board1{
     display: grid;
+    grid-template-rows: 1fr 4fr;
+    margin-right: 0px;
+}
+
+.CircuitDiv{
+    margin-left: 30px;
+    display: grid;
+    background-color: var(--rp-muted);
+    border-radius: 26px;
     justify-content: center;
-    position: absolute;
+    align-items: center;
+}
+
+@media screen and (max-width:1024px) {
+    .Board{
+        height: max-content;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+    }
+    .Board1{
+        margin-right: 90px;
+    }
+    .CircuitDiv{
+        margin-left: 90px;
+    }
 }

@@ -1,69 +1,69 @@
 import "./styles/InputTable.css"
-import { DataGrid, GridColDef, GridEventListener } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useState } from 'react';
 
 type Row = {
   id: number;
-  A: string;
-  B: string;
   S: string;
+} & {
+  [key: string]: string | number;
 };
 
 export default function DataTable() {
-  const [rows, setRows] = useState<Row[]>([
-    { id: 1, A: '', B: '', S: '' },
-    { id: 2, A: '', B: '', S: '' },
-    { id: 3, A: '', B: '', S: '' },
-    { id: 4, A: '', B: '', S: '' },
-    { id: 5, A: '', B: '', S: '' },
-    { id: 6, A: '', B: '', S: '' },
-    { id: 7, A: '', B: '', S: '' },
-    { id: 8, A: '', B: '', S: '' },
-    { id: 9, A: '', B: '', S: '' },
-  ]);
 
-  const columns: GridColDef[] = [
-    { field: 'A', headerName: 'A', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
-    { field: 'B', headerName: 'B', flex: 1, editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
-    { field: 'S', headerName: 'S', editable: true, headerClassName:'GridColumnHeader',headerAlign:'center' },
-  ];
+  var initialLetters = ['A','B','C'];
+  var initialOutput = [0,0,0,0,0,0,0,0];
 
-  const handleCellKeyDown: GridEventListener<'cellKeyDown'> = (params, event) => {
-    const column = params.field as keyof Row;
-    const rowId = params.id as number;
-    const rowIndex = rows.findIndex((row) => row.id === rowId);
-    if (rowIndex === -1) return;
+  const [letters,setLetters] = useState(initialLetters);
+  const [output,setOutput] = useState(initialOutput);
 
-    const row = rows[rowIndex];
-    const cellValue = row[column] as string || '';
+  if((Math.pow(2,letters.length))!== output.length){
+    throw new Error(`Erro, tamanho do vetor de saída (${output.length}) não bate com quantidade de variáveis (${Math.pow(2,letters.length)})`);
+  }
 
-    if (cellValue.length >= 1 && event.key !== 'Backspace') {
-      event.preventDefault();
-      return;
-    }
+  const columns: GridColDef[] = letters.map((letter) => ({
+    field: letter,
+    headerName: letter,
+    flex: 1,
+    editable: false,
+    headerClassName:'GridColumnHeader',
+    headerAlign:'center', 
+  }));
 
-    const newRows = [...rows];
-    switch (event.key) {
-      case '0':
-        newRows[rowIndex] = { ...row, [column]: '0' };
-        setRows(newRows);
-        break;
-      case '1':
-        newRows[rowIndex] = { ...row, [column]: '1' };
-        setRows(newRows);
-        break;
-      case 'Backspace':
-        newRows[rowIndex] = { ...row, [column]: '' };
-        setRows(newRows);
-        break;
-      default:
-        event.preventDefault();
-        newRows[rowIndex] = { ...row, [column]: '0' };
-        setRows(newRows);
-    }
-  };
+  function decimalToBinary(N: number) {
+    return (N >>> 0).toString(2).padStart(letters.length, '0');;
+  }
+  
+  function columnsForTheRows(index:number){
+    var binary = decimalToBinary(index);
+
+    const columnValues = columns.reduce((acc, column, idx) => {
+      acc[column.field] = binary[idx] || '0';
+      return acc;
+    }, {} as { [key: string]: string });
+
+    return columnValues;
+  }
+
+  columns.push({ 
+    field: 'S', 
+    headerName: 'S', 
+    flex: 1, 
+    editable: true, 
+    headerClassName:'GridColumnHeader',
+    headerAlign:'center' 
+  });  
+
+  const [rows, setRows] = useState<Row[]>(
+    output.map((result, index) => ({
+      id: index,
+      ...columnsForTheRows(index),
+      S: result.toString(), // Ensure 'S' field is a string for consistency
+    }))
+  );
 
   return (
+    <div className="InputTableDiv">
       <DataGrid
         rows={rows}
         columns={columns}
@@ -73,8 +73,8 @@ export default function DataTable() {
         disableColumnMenu
         disableColumnResize
         disableColumnSorting
-        onCellKeyDown={handleCellKeyDown}
         className='InputTable'
-      />
+        />
+    </div>
   );
 }

@@ -1,7 +1,29 @@
-.triangulo{
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 86.6px solid blue; /* 86.6px is approximately height of an equilateral triangle with sides of 100px */
+.InputEquation{
+  margin:22px;
+  padding: 17px 23px 17px 23px;
+  background-color: var(--rp-surface);
+  grid-template-rows:auto;
+  border-radius: 5px;
+  border: solid var(--rp-surface) 2px;
+  color: var(--rp-text);
+  font-family: 'Jebrains', sans-serif;
+  font-size: 1.5rem;
+}
+.InputEquation:focus{
+  outline: none;
+  border: solid var(--rp-highlight-high) 2px;
+}
+
+.InputEquation::placeholder {
+  transition: opacity 0.3s ease;
+}
+
+.InputEquation:focus::placeholder {
+  opacity: 0; /* Hide the placeholder on focus */
+}
+
+@media screen and (max-width:500px) {
+  .InputEquation{
+    font-size: 1rem;
   }
+}
