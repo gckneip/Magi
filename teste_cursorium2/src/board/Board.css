@@ -1,6 +1,8 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
+
 .Board{
     width:100vw;
-    height: 100vh;
+    height: max-content;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: var(--rp-base);
@@ -38,9 +40,11 @@
     border-radius: 26px;
     justify-content: center;
     align-items: center;
+    height: 70vh;
 }
 
 @media screen and (max-width:1024px) {
+    html, body {margin: 0; height: 100%; overflow:scroll}
     .Board{
         height: max-content;
         grid-template-columns: none;
@@ -49,8 +53,10 @@
     }
     .Board1{
         margin-right: 90px;
+        height: fit-content;
     }
     .CircuitDiv{
         margin-left: 90px;
     }
+
 }

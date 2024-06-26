@@ -11,8 +11,8 @@ type Row = {
 
 export default function DataTable() {
 
-  var initialLetters = ['A','B','C'];
-  var initialOutput = [0,0,0,0,0,0,0,0];
+  var initialLetters = ['A','B','C','D','E'];
+  var initialOutput = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
   const [letters,setLetters] = useState(initialLetters);
   const [output,setOutput] = useState(initialOutput);
