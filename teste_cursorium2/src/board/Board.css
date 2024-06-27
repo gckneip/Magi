@@ -2,7 +2,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 
 .Board{
     width:100vw;
-    height: max-content;
+    height:100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: var(--rp-base);
@@ -40,7 +40,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     border-radius: 26px;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 69vh;
 }
 
 @media screen and (max-width:1024px) {
@@ -53,7 +53,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     }
     .Board1{
         margin-right: 90px;
-        height: fit-content;
+        /*height: fit-content;*/
     }
     .CircuitDiv{
         margin-left: 90px;
