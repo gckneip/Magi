@@ -29,6 +29,44 @@
     color: var(--rp-text) !important;
 }
 
+.cellSelector, .menuItem{
+    color: var(--rp-text)! important;
+    width: 100%;
+    border: none !important;
+    font-family: 'Jebrains', sans-serif !important;
+    font-size: 1.5rem !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.cellSelector .MuiSelect-icon {
+    display: none;
+}
+
+.cellSelector .MuiOutlinedInput-notchedOutline {
+    border: none;
+}
+
+.cellSelector > div {
+    padding: 0px !important
+}
+
+.menu{
+    background-color: var(--rp-surface) !important;
+    text-align: center !important;
+    min-width: min-content !important;
+}
+
+.menuItem{
+    background-color: var(--rp-surface) !important;
+    text-align: center !important;
+    width: min-content !important;
+}
+
+.menuItem:hover, .cellSelector:hover{
+    background-color: var(--rp-overlay) !important;
+}
+
 @media screen and (max-width:500px) {
     .GridColumnHeader{
         font-size: 1rem;
