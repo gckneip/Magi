@@ -17,6 +17,11 @@
     color: var(--rp-text);
 }
 
+
+.InputTable {
+    max-height: 44vh;
+}
+
 .GridColumnHeader{
     background-color: var(--rp-overlay);
     color: var(--rp-foam);
