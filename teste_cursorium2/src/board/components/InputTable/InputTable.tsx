@@ -1,6 +1,7 @@
-import "./styles/InputTable.css"
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { useState } from 'react';
+import { MenuItem, Select } from "@mui/material";
+import "./styles/InputTable.css";
+import { DataGrid, GridColDef, GridRowId } from '@mui/x-data-grid';
+import { useState, useEffect } from 'react';
 
 type Row = {
   id: number;
@@ -11,14 +12,14 @@ type Row = {
 
 export default function DataTable() {
 
-  var initialLetters = ['A','B','C','D','E'];
-  var initialOutput = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  const initialLetters = ['A', 'B', 'C'];
+  const initialOutput = [0, 0, 0, 1, 0, 0, 0, 0];
 
-  const [letters,setLetters] = useState(initialLetters);
-  const [output,setOutput] = useState(initialOutput);
+  const [letters, setLetters] = useState(initialLetters);
+  const [output, setOutput] = useState(initialOutput);
 
-  if((Math.pow(2,letters.length))!== output.length){
-    throw new Error(`Erro, tamanho do vetor de saída (${output.length}) não bate com quantidade de variáveis (${Math.pow(2,letters.length)})`);
+  if ((Math.pow(2, letters.length)) !== output.length) {
+    throw new Error(`Error: output length (${output.length}) does not match the number of variables (${Math.pow(2, letters.length)})`);
   }
 
   const columns: GridColDef[] = letters.map((letter) => ({
@@ -26,39 +27,60 @@ export default function DataTable() {
     headerName: letter,
     flex: 1,
     editable: false,
-    headerClassName:'GridColumnHeader',
-    headerAlign:'center', 
+    headerClassName: 'GridColumnHeader',
+    headerAlign: 'center',
   }));
 
   function decimalToBinary(N: number) {
-    return (N >>> 0).toString(2).padStart(letters.length, '0');;
+    return (N >>> 0).toString(2).padStart(letters.length, '0');
   }
-  
-  function columnsForTheRows(index:number){
-    var binary = decimalToBinary(index);
 
-    const columnValues = columns.reduce((acc, column, idx) => {
+  function columnsForTheRows(index: number) {
+    const binary = decimalToBinary(index);
+
+    return columns.reduce((acc, column, idx) => {
       acc[column.field] = binary[idx] || '0';
       return acc;
     }, {} as { [key: string]: string });
-
-    return columnValues;
   }
 
-  columns.push({ 
-    field: 'S', 
-    headerName: 'S', 
-    flex: 1, 
-    editable: true, 
-    headerClassName:'GridColumnHeader',
-    headerAlign:'center' 
-  });  
+  const handleStatusChange = (id: GridRowId, newStatus: string) => {
+    setRows((prevRows) =>
+      prevRows.map((row) => (row.id === id ? { ...row, S: newStatus } : row))
+    );
+  };
+
+  columns.push({
+    field: 'S',
+    headerName: 'S',
+    flex: 1,
+    headerClassName: 'GridColumnHeader',
+    headerAlign: 'center',
+    renderCell: (params) => (
+      <Select
+        value={params.value}
+        onChange={(e) => handleStatusChange(params.id, e.target.value)}
+        className="cellSelector"
+        fullWidth
+        MenuProps={{
+          classes: { paper: 'menu' },
+        }}
+      >
+        <MenuItem key={0} value={'0'} className="menuItem">
+          {'0'}
+        </MenuItem>
+        <MenuItem key={1} value={'1'} className="menuItem">
+          {'1'}
+        </MenuItem>
+      </Select>
+    ),
+  });
 
   const [rows, setRows] = useState<Row[]>(
     output.map((result, index) => ({
       id: index,
       ...columnsForTheRows(index),
-      S: result.toString(), // Ensure 'S' field is a string for consistency
+      S: result.toString(),
     }))
   );
 
@@ -73,8 +95,8 @@ export default function DataTable() {
         disableColumnMenu
         disableColumnResize
         disableColumnSorting
-        className='InputTable'
-        />
+        className="InputTable"
+      />
     </div>
   );
 }
